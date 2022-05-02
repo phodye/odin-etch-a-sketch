@@ -8,6 +8,11 @@ for (x = 0; x < 16; x++) {
     div.style.border = "thin solid #000000";
     div.style.height = "10px";
     div.style.width = "10px";
+    div.addEventListener("mouseenter", () => {
+        div.style.backgroundColor = "purple";
+    }) 
     container.appendChild(div);
 }
+
+
 

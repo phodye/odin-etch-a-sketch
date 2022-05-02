@@ -24,6 +24,8 @@ container.style.width = "600px";
 container.style.height = "600px";
 
 function buildGrid(input) {
+container.innerHTML = "";
+
 const gridSize = input;
 let numberofDivs = gridSize * gridSize;
 let divDimension = 600 / gridSize;

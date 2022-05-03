@@ -24,11 +24,13 @@ for (x = 0; x < numberofDivs; x++) {
     div.style.width = `${divDimension}px`;
     div.addEventListener("mouseenter", () => {
         if (colorChooser.textContent === "Black and White") {
-                div.style.backgroundColor = "black";
+                div.style.backgroundColor = "rgb(0, 0, 0, 1)";
         } else if (colorChooser.textContent === "Color Mix") {
                 div.style.backgroundColor = getRandomColor();
+        } else if (colorChooser.textContent === "Shading") {
+                div.style.backgroundColor = shading();
         }
-    }) 
+     }) 
     container.appendChild(div);
 }
 }
@@ -49,9 +51,11 @@ let colorChooser = document.createElement('button');
 colorChooser.textContent = "Black and White";
 colorChooser.addEventListener('click', () => {
     if (colorChooser.textContent === "Black and White") {
-        colorChooser.textContent = "Color Mix"
+        colorChooser.textContent = "Color Mix";
     } else if (colorChooser.textContent === "Color Mix") {
-        colorChooser.textContent = "Black and White"
+        colorChooser.textContent = "Shading";
+    } else if (colorChooser.textContent === "Shading") {
+        colorChooser.textContent = "Black and White";
     }
     console.log(colorChooser.textContent)
 })
@@ -59,10 +63,23 @@ lowerContainer.appendChild(colorChooser);
 
 //random color generator 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
   }
+
+//shading color generator
+function shading() {
+    let shadedColor = 'rgb'
+    let shadingArray = [0,0,0,.1]
+    for (i = 0; i < 1; i++) {
+        shadingArray[3] += .1;
+        let newTone = shadingArray.toString();
+        shadedColor = shadedColor + "(" + newTone + ")";
+    }
+    console.log(shadedColor);
+    return shadedColor;
+}

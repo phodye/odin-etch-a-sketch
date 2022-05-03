@@ -1,21 +1,3 @@
-//get grid size
-const body = document.querySelector("body");
-const section = document.querySelector("section");
-
-const gridInput = document.createElement('input');
-gridInput.setAttribute("type", "text");
-gridInput.setAttribute("value", "Input Grid Size") 
-gridInput.style.margin = "10px"; 
-gridInput.style.rightMargin = "2px";
-body.insertBefore(gridInput, section);
-
-console.log(gridInput.value);
-
-const pressMe = document.createElement("button");
-pressMe.textContent = "Create Grid";
-body.insertBefore(pressMe, section);
-pressMe.addEventListener('click', () => buildGrid(gridInput.value));
-
 //create grid 
 const container = document.querySelector('#container');
 container.style.display = "flex";
@@ -44,5 +26,13 @@ for (x = 0; x < numberofDivs; x++) {
 }
 }
 
+// Slider
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
 
-
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.innerHTML = this.value;
+    buildGrid(this.value);
+  } 

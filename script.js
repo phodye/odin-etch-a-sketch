@@ -22,14 +22,13 @@ for (x = 0; x < numberofDivs; x++) {
     div.style.border = ".5px solid #454545";
     div.style.height = `${divDimension}px`;
     div.style.width = `${divDimension}px`;
+    div.style.backgroundColor = "rgba(255, 255, 255, 1.0)";
     div.addEventListener("mouseenter", () => {
         if (colorChooser.textContent === "Black and White") {
-                div.style.backgroundColor = "rgb(0, 0, 0, 1)";
+                div.style.backgroundColor = "rgba(0, 0, 0, 1)";
         } else if (colorChooser.textContent === "Color Mix") {
                 div.style.backgroundColor = getRandomColor();
-        } else if (colorChooser.textContent === "Shading") {
-                div.style.backgroundColor = shading();
-        }
+        } 
      }) 
     container.appendChild(div);
 }
@@ -53,8 +52,6 @@ colorChooser.addEventListener('click', () => {
     if (colorChooser.textContent === "Black and White") {
         colorChooser.textContent = "Color Mix";
     } else if (colorChooser.textContent === "Color Mix") {
-        colorChooser.textContent = "Shading";
-    } else if (colorChooser.textContent === "Shading") {
         colorChooser.textContent = "Black and White";
     }
     console.log(colorChooser.textContent)
@@ -70,16 +67,3 @@ function getRandomColor() {
     }
     return color;
   }
-
-//shading color generator
-function shading() {
-    let shadedColor = 'rgb'
-    let shadingArray = [0,0,0,.1]
-    for (i = 0; i < 1; i++) {
-        shadingArray[3] += .1;
-        let newTone = shadingArray.toString();
-        shadedColor = shadedColor + "(" + newTone + ")";
-    }
-    console.log(shadedColor);
-    return shadedColor;
-}

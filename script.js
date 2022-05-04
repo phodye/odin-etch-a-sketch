@@ -1,11 +1,25 @@
+//etch box contianer
+const etchBox = document.querySelector('#etchBox');
+etchBox.style.width = "950px";
+etchBox.style.height = "725px";
+etchBox.style.borderRadius = "6%";
+etchBox.style.margin = "auto";
+etchBox.style.backgroundColor = "#e63629";
+
 //create grid- container 
 const container = document.querySelector('#container');
 container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.width = "600px";
 container.style.height = "600px";
+container.style.margin = "auto";
+container.style.padding = "10px";
 
-const lowerContiner = document.querySelector('#lowerContainer');
+const slideContainer = document.querySelector('#slideRow');
+slideContainer.style.display = "flex";
+slideContainer.style.alignItems = "center";
+
+const slideElement = document.querySelector('#myRange');
 
 //create grid- build function
 function buildGrid(input) {
@@ -37,26 +51,39 @@ for (x = 0; x < numberofDivs; x++) {
 //slider for grid size
 let slider = document.getElementById("myRange");
 let output = document.getElementById("demo");
-output.innerHTML = slider.value;
 
 //Updates the output value and invokes buildGrid when slider is updated
 slider.oninput = function() {
-    output.innerHTML = this.value;
     buildGrid(this.value);
   } 
 
-//color/bw button
+//color or bw button
 let colorChooser = document.createElement('button');
+colorChooser.style.height = "75px";
+colorChooser.style.width = "75px";
+colorChooser.style.borderRadius = "50%";
 colorChooser.textContent = "Black and White";
+colorChooser.style.margin = "10px";
 colorChooser.addEventListener('click', () => {
     if (colorChooser.textContent === "Black and White") {
         colorChooser.textContent = "Color Mix";
     } else if (colorChooser.textContent === "Color Mix") {
         colorChooser.textContent = "Black and White";
     }
-    console.log(colorChooser.textContent)
 })
-lowerContainer.appendChild(colorChooser);
+slideContainer.insertBefore(colorChooser, slideElement);
+
+//instructions button
+let instructions = document.createElement('button');
+instructions.style.height = "75px";
+instructions.style.width = "75px";
+instructions.style.borderRadius = "50%";
+instructions.style.margin = "10px";
+instructions.textContent = "Directions";
+instructions.addEventListener('click', () => {
+    alert("Use the slider to create or reset the grid \nToggle between color and monochrome with the left button")
+})
+slideContainer.appendChild(instructions);
 
 //random color generator 
 function getRandomColor() {

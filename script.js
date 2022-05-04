@@ -3,6 +3,7 @@ const etchBox = document.querySelector('#etchBox');
 etchBox.style.width = "950px";
 etchBox.style.height = "725px";
 etchBox.style.borderRadius = "6%";
+etchBox.style.boxShadow = "10px 20px 30px black"; 
 etchBox.style.margin = "auto";
 etchBox.style.backgroundColor = "#e63629";
 
@@ -15,6 +16,7 @@ container.style.height = "600px";
 container.style.margin = "auto";
 container.style.padding = "10px";
 
+//slide container
 const slideContainer = document.querySelector('#slideRow');
 slideContainer.style.display = "flex";
 slideContainer.style.alignItems = "center";
@@ -38,9 +40,9 @@ for (x = 0; x < numberofDivs; x++) {
     div.style.width = `${divDimension}px`;
     div.style.backgroundColor = "rgba(255, 255, 255, 1.0)";
     div.addEventListener("mouseenter", () => {
-        if (colorChooser.textContent === "Black and White") {
+        if (colorChooser.textContent === "BW") {
                 div.style.backgroundColor = "rgba(0, 0, 0, 1)";
-        } else if (colorChooser.textContent === "Color Mix") {
+        } else if (colorChooser.textContent === "Color") {
                 div.style.backgroundColor = getRandomColor();
         } 
      }) 
@@ -62,13 +64,14 @@ let colorChooser = document.createElement('button');
 colorChooser.style.height = "75px";
 colorChooser.style.width = "75px";
 colorChooser.style.borderRadius = "50%";
-colorChooser.textContent = "Black and White";
+colorChooser.textContent = "BW";
 colorChooser.style.margin = "10px";
+colorChooser.style.boxShadow = "5px 5px 10px black"; 
 colorChooser.addEventListener('click', () => {
-    if (colorChooser.textContent === "Black and White") {
-        colorChooser.textContent = "Color Mix";
-    } else if (colorChooser.textContent === "Color Mix") {
-        colorChooser.textContent = "Black and White";
+    if (colorChooser.textContent === "BW") {
+        colorChooser.textContent = "Color";
+    } else if (colorChooser.textContent === "Color") {
+        colorChooser.textContent = "BW";
     }
 })
 slideContainer.insertBefore(colorChooser, slideElement);
@@ -79,6 +82,7 @@ instructions.style.height = "75px";
 instructions.style.width = "75px";
 instructions.style.borderRadius = "50%";
 instructions.style.margin = "10px";
+instructions.style.boxShadow = "5px 5px 10px black"; 
 instructions.textContent = "Directions";
 instructions.addEventListener('click', () => {
     alert("Use the slider to create or reset the grid \nToggle between color and monochrome with the left button")

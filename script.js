@@ -96,7 +96,7 @@ instructions.style.margin = "10px";
 instructions.style.boxShadow = "5px 5px 10px black"; 
 instructions.textContent = "Directions";
 instructions.addEventListener('click', () => {
-    alert("Use the slider to create or reset the grid \nToggle between color and monochrome with the left button")
+    alert("Use the slider to reset or resize the grid \nToggle between black, color and eraser with the left button")
 })
 slideContainer.appendChild(instructions);
 

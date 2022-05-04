@@ -1,10 +1,11 @@
 //etch box contianer
 const etchBox = document.querySelector('#etchBox');
-etchBox.style.width = "950px";
+etchBox.style.width = "1000px";
 etchBox.style.height = "725px";
-etchBox.style.borderRadius = "6%";
-etchBox.style.boxShadow = "10px 20px 30px black"; 
+etchBox.style.borderRadius = "3%";
+etchBox.style.boxShadow = "10px 20px 30px 4px black"; 
 etchBox.style.margin = "auto";
+etchBox.style.paddingTop = "10px";
 etchBox.style.backgroundColor = "#e63629";
 
 //create grid- container 
@@ -15,6 +16,9 @@ container.style.width = "600px";
 container.style.height = "600px";
 container.style.margin = "auto";
 container.style.padding = "10px";
+container.style.backgroundColor = "#f7f7f7";
+container.style.borderRadius = "1%";
+container.style.boxShadow = "inset 0px 0px 10px 0px black";
 
 //slide container
 const slideContainer = document.querySelector('#slideRow');
@@ -35,20 +39,25 @@ console.log(input);
 for (x = 0; x < numberofDivs; x++) {
     const div = document.createElement('div');
     div.style.boxSizing = "border-box";
-    div.style.border = ".5px solid #454545";
     div.style.height = `${divDimension}px`;
     div.style.width = `${divDimension}px`;
     div.style.backgroundColor = "rgba(255, 255, 255, 1.0)";
-    div.addEventListener("mouseenter", () => {
-        if (colorChooser.textContent === "BW") {
+    div.style.border = "1px solid gray";
+    div.addEventListener("mouseover", () => {
+        if (colorChooser.textContent === "Black") {
                 div.style.backgroundColor = "rgba(0, 0, 0, 1)";
         } else if (colorChooser.textContent === "Color") {
                 div.style.backgroundColor = getRandomColor();
-        } 
+        } else if (colorChooser.textContent === "Eraser") {
+                div.style.backgroundColor = "white";
+        }
      }) 
     container.appendChild(div);
 }
 }
+
+//load page with medium sized grid
+buildGrid(50);
 
 //slider for grid size
 let slider = document.getElementById("myRange");
@@ -59,19 +68,21 @@ slider.oninput = function() {
     buildGrid(this.value);
   } 
 
-//color or bw button
+//black or color or eraser button
 let colorChooser = document.createElement('button');
 colorChooser.style.height = "75px";
 colorChooser.style.width = "75px";
 colorChooser.style.borderRadius = "50%";
-colorChooser.textContent = "BW";
+colorChooser.textContent = "Black";
 colorChooser.style.margin = "10px";
 colorChooser.style.boxShadow = "5px 5px 10px black"; 
 colorChooser.addEventListener('click', () => {
-    if (colorChooser.textContent === "BW") {
+    if (colorChooser.textContent === "Black") {
         colorChooser.textContent = "Color";
     } else if (colorChooser.textContent === "Color") {
-        colorChooser.textContent = "BW";
+        colorChooser.textContent = "Eraser";
+    } else if (colorChooser.textContent === "Eraser") {
+        colorChooser.textContent = "Black";
     }
 })
 slideContainer.insertBefore(colorChooser, slideElement);

@@ -40,3 +40,33 @@
     background: #fff01c;
     cursor: pointer;
   }
+
+.shaded {
+      background-color: black;
+      opacity: .1;
+  }
+
+.shaded2 {
+    background-color: black;
+    opacity: .2;
+}
+
+.shaded3 {
+    background-color: black;
+    opacity: .3;
+}
+
+.shaded4 {
+    background-color: black;
+    opacity: .4;
+}
+
+.shaded5 {
+    background-color: black;
+    opacity: .5;
+}
+
+.shaded6 {
+    background-color: black;
+    opacity: .6;
+}

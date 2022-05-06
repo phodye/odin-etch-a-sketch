@@ -41,15 +41,20 @@ for (x = 0; x < numberofDivs; x++) {
     div.style.boxSizing = "border-box";
     div.style.height = `${divDimension}px`;
     div.style.width = `${divDimension}px`;
-    div.style.backgroundColor = "rgba(255, 255, 255, 1.0)";
+    div.style.backgroundColor = "white";
     div.style.border = "1px solid gray";
+    div.style.opacity = "1";
     div.addEventListener("mouseover", () => {
         if (colorChooser.textContent === "Black") {
-                div.style.backgroundColor = "rgba(0, 0, 0, 1)";
+                div.style.backgroundColor = "rgb(0, 0, 0)";
         } else if (colorChooser.textContent === "Color") {
                 div.style.backgroundColor = getRandomColor();
         } else if (colorChooser.textContent === "Eraser") {
                 div.style.backgroundColor = "white";
+        } else if (colorChooser.textContent === "Shading") {
+            if (div.style.backgroundColor === "white" && div.style.opacity === "1") {
+                div.classList.add("shaded");
+            }
         }
      }) 
     container.appendChild(div);
@@ -82,7 +87,7 @@ colorChooser.addEventListener('click', () => {
     } else if (colorChooser.textContent === "Color") {
         colorChooser.textContent = "Eraser";
     } else if (colorChooser.textContent === "Eraser") {
-        colorChooser.textContent = "Black";
+        colorChooser.textContent = "Shading";
     }
 })
 slideContainer.insertBefore(colorChooser, slideElement);
@@ -109,3 +114,8 @@ function getRandomColor() {
     }
     return color;
   }
+
+//shading
+function shadeDiv() {
+    
+}
